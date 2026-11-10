@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sree Rachnae Shyam - Data & AI Engineer</title>
+  <meta name="description" content="Data & AI Engineer. Production pipelines at Eli Lilly (65M+ rows). GenAI at Quantiphi. Building at the intersection of data infrastructure and intelligent systems.">
+  <meta property="og:title" content="Sree Rachnae Shyam - Data & AI Engineer">
+  <meta property="og:description" content="Production experience at Eli Lilly and Quantiphi. Data pipelines, ML systems, GenAI applications.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ───────────────────────────────────────────────────────── */
+    :root {
+      --bg:          #060d18;
+      --bg-up:       #0b1526;
+      --bg-card:     rgba(10, 21, 40, 0.75);
+      --bg-card-h:   rgba(13, 26, 50, 0.95);
+      --border:      rgba(0, 212, 255, 0.07);
+      --border-h:    rgba(0, 212, 255, 0.22);
+      --cyan:        #00d4ff;
+      --cyan-10:     rgba(0, 212, 255, 0.10);
+      --cyan-20:     rgba(0, 212, 255, 0.20);
+      --blue:        #2563eb;
+      --violet:      #7c3aed;
+      --green:       #10b981;
+      --txt:         #e8f4fd;
+      --txt-2:       #7a9ab5;
+      --txt-m:       #3d5a73;
+      --ff:          'Inter', system-ui, -apple-system, sans-serif;
+      --mono:        'JetBrains Mono', 'Courier New', monospace;
+      --r:           6px;
+    }
+
+    /* ── RESET ────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: var(--ff);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a  { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; color: inherit; }
+
+    /* ── NAV ──────────────────────────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 max(1.5rem, 6vw);
+      border-bottom: 1px solid transparent;
+      transition: background .3s, border-color .3s;
+    }
+    #nav.scrolled {
+      background: rgba(6, 13, 24, .92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: var(--border);
+    }
+    .nav-mark {
+      font-size: .85rem; font-weight: 700; letter-spacing: -.01em;
+    }
+    .nav-mark em { color: var(--cyan); font-style: normal; }
+    .nav-links {
+      display: flex; gap: 2rem;
+    }
+    .nav-links a {
+      font-size: .825rem; color: var(--txt-2);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-btn {
+      font-size: .78rem; font-weight: 600;
+      padding: .45rem 1.1rem;
+      border: 1px solid var(--border-h);
+      border-radius: var(--r);
+      color: var(--cyan);
+      transition: background .2s;
+    }
+    .nav-btn:hover { background: var(--cyan-10); }
+    .nav-ham {
+      display: none; flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .nav-ham span { display: block; width: 20px; height: 1.5px; background: var(--txt); }
+
+    /* ── MOBILE MENU ──────────────────────────────────────────────────── */
+    #mmenu {
+      display: none; position: fixed;
+      top: 60px; left: 0; right: 0; bottom: 0;
+      background: rgba(6, 13, 24, .97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 90;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    #mmenu.open { display: flex; }
+    #mmenu a { font-size: 1.5rem; font-weight: 700; color: var(--txt); transition: color .2s; }
+    #mmenu a:hover { color: var(--cyan); }
+
+    /* ── HERO ─────────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 80px max(1.5rem, 8vw) 4rem;
+      overflow: hidden;
+    }
+    #hero-canvas { position: absolute; inset: 0; z-index: 0; }
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 15% 50%, rgba(0,212,255,.04) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 820px; }
+
+    .hero-status {
+      display: inline-flex; align-items: center; gap: .6rem;
+      margin-bottom: 1.75rem;
+    }
+    .h-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--cyan);
+      animation: dot-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.65); }
+    }
+    .h-status-txt {
+      font-size: .75rem; font-weight: 500;
+      color: var(--cyan); font-family: var(--mono);
+      letter-spacing: .04em;
+    }
+
+    h1.hero-name {
+      font-size: clamp(2.8rem, 7.5vw, 5.75rem);
+      font-weight: 850;
+      line-height: .95; letter-spacing: -.035em;
+      color: var(--txt);
+      margin-bottom: .6rem;
+    }
+
+    .hero-role-wrap { height: 2.2rem; overflow: hidden; margin-bottom: 1.75rem; }
+    .hero-role {
+      font-size: clamp(.95rem, 2.2vw, 1.3rem);
+      font-weight: 400; color: var(--txt-2);
+      display: flex; align-items: center; gap: .65rem;
+    }
+    #role-word {
+      color: var(--cyan); font-weight: 600;
+      transition: opacity .35s, transform .35s cubic-bezier(.76,0,.24,1);
+    }
+
+    .hero-desc {
+      font-size: 1rem; line-height: 1.8;
+      color: var(--txt-2); max-width: 580px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-desc strong { color: var(--txt); font-weight: 500; }
+
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: .85rem; align-items: center;
+    }
+
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .7rem 1.6rem;
+      background: var(--cyan); color: var(--bg);
+      font-weight: 700; font-size: .875rem;
+      border-radius: var(--r);
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-fill:hover { opacity: .88; transform: translateY(-1px); }
+
+    .btn-line {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .7rem 1.4rem;
+      border: 1px solid var(--border-h); color: var(--txt-2);
+      font-size: .875rem; border-radius: var(--r);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-line:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    .btn-sq {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid var(--border-h); color: var(--txt-2);
+      border-radius: var(--r);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-sq:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: max(1.5rem, 8vw);
+      display: flex; align-items: center; gap: .65rem;
+      color: var(--txt-m); font-size: .7rem; font-family: var(--mono);
+      z-index: 1;
+    }
+    .scroll-line {
+      width: 28px; height: 1px; background: var(--txt-m);
+      animation: sline 2.2s ease-in-out infinite;
+    }
+    @keyframes sline {
+      0%,100% { width:28px; opacity:.5; }
+      50%      { width:44px; opacity:1; }
+    }
+
+    /* ── METRICS ──────────────────────────────────────────────────────── */
+    #metrics {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .m-cell {
+      padding: 2.75rem max(1.5rem, 3vw);
+      border-right: 1px solid var(--border);
+    }
+    .m-cell:last-child { border-right: none; }
+    .m-num {
+      font-size: 2.5rem; font-weight: 800;
+      letter-spacing: -.035em; line-height: 1;
+      color: var(--txt); margin-bottom: .5rem;
+    }
+    .m-num .c { color: var(--cyan); }
+    .m-label {
+      font-size: .825rem; color: var(--txt-2); line-height: 1.45;
+      margin-bottom: .5rem;
+    }
+    .m-src {
+      font-size: .68rem; color: var(--txt-m);
+      font-family: var(--mono);
+    }
+
+    /* ── SECTION SHELL ────────────────────────────────────────────────── */
+    .wrap { padding: 7rem max(1.5rem, 8vw); }
+    .s-head { margin-bottom: 3.5rem; }
+    .s-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 800; letter-spacing: -.025em; line-height: 1.1;
+      color: var(--txt); margin-bottom: .6rem;
+    }
+    .s-sub { font-size: .95rem; color: var(--txt-2); max-width: 480px; }
+
+    /* ── EXPERIENCE ───────────────────────────────────────────────────── */
+    .timeline {
+      display: flex; flex-direction: column;
+      border-left: 1px solid var(--border);
+      padding-left: 2.25rem;
+      margin-left: .75rem;
+    }
+    .t-item { position: relative; padding-bottom: 3rem; }
+    .t-item:last-child { padding-bottom: 0; }
+    .t-node {
+      position: absolute; left: -2.75rem; top: .3rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--cyan);
+      transition: background .3s;
+    }
+    .t-item:hover .t-node { background: var(--cyan); }
+
+    .t-meta {
+      display: flex; align-items: center; gap: .9rem;
+      flex-wrap: wrap; margin-bottom: .35rem;
+    }
+    .t-co   { font-size: 1.05rem; font-weight: 700; color: var(--txt); }
+    .t-when {
+      font-size: .7rem; font-family: var(--mono); color: var(--txt-m);
+      padding: .15rem .55rem; border: 1px solid var(--border); border-radius: 100px;
+    }
+    .t-role { font-size: .875rem; color: var(--cyan); font-weight: 500; margin-bottom: .2rem; }
+    .t-loc  { font-size: .72rem; color: var(--txt-m); font-family: var(--mono); margin-bottom: .9rem; }
+
+    .t-bullets { display: flex; flex-direction: column; gap: .55rem; }
+    .t-bullets li {
+      font-size: .9rem; color: var(--txt-2);
+      padding-left: 1rem; position: relative; line-height: 1.6;
+    }
+    .t-bullets li::before {
+      content: ''; position: absolute; left: 0; top: .7rem;
+      width: 4px; height: 1px; background: var(--cyan);
+    }
+    .t-bullets li strong { color: var(--txt); font-weight: 500; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+    .tag {
+      font-size: .68rem; font-weight: 500; font-family: var(--mono);
+      padding: .22rem .6rem;
+      background: var(--cyan-10); color: var(--cyan);
+      border: 1px solid var(--cyan-20); border-radius: 3px;
+    }
+    .tag-v { background: rgba(124,58,237,.1); color: #a78bfa; border-color: rgba(124,58,237,.2); }
+    .tag-b { background: rgba(37,99,235,.1);  color: #60a5fa; border-color: rgba(37,99,235,.2);  }
+    .tag-g { background: rgba(16,185,129,.1); color: #34d399; border-color: rgba(16,185,129,.2); }
+    .tag-m { background: rgba(255,255,255,.04); color: var(--txt-m); border-color: var(--border); }
+
+    /* ── PROJECTS ─────────────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .p-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.75rem;
+      transition: border-color .3s, background .3s;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .p-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,.025), transparent 60%);
+      opacity: 0; transition: opacity .3s; pointer-events: none;
+    }
+    .p-card:hover { border-color: var(--border-h); background: var(--bg-card-h); }
+    .p-card:hover::before { opacity: 1; }
+
+    .p-feat  { grid-column: span 7; }
+    .p-side  { grid-column: span 5; }
+    .p-half  { grid-column: span 6; }
+
+    .p-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .68rem; font-weight: 600; font-family: var(--mono);
+      padding: .18rem .6rem; border-radius: 100px;
+      margin-bottom: .9rem; align-self: flex-start;
+    }
+    .pb-c { background: var(--cyan-10); color: var(--cyan);  border: 1px solid var(--cyan-20); }
+    .pb-v { background: rgba(124,58,237,.1); color: #a78bfa; border: 1px solid rgba(124,58,237,.2); }
+    .pb-b { background: rgba(37,99,235,.1);  color: #60a5fa; border: 1px solid rgba(37,99,235,.2); }
+    .pb-g { background: rgba(16,185,129,.1); color: #34d399; border: 1px solid rgba(16,185,129,.2); }
+
+    .p-title {
+      font-size: 1.1rem; font-weight: 700; color: var(--txt);
+      letter-spacing: -.01em; margin-bottom: .7rem;
+    }
+    .p-hl {
+      font-size: .78rem; font-family: var(--mono); color: var(--cyan);
+      padding: .5rem .7rem;
+      background: var(--cyan-10); border-left: 2px solid var(--cyan);
+      border-radius: 0 3px 3px 0; margin-bottom: 1.1rem;
+    }
+    .p-desc {
+      font-size: .875rem; color: var(--txt-2); line-height: 1.7;
+      flex: 1; margin-bottom: 1.25rem;
+    }
+    .p-links { display: flex; gap: 1rem; align-items: center; margin-top: auto; }
+    .p-link {
+      font-size: .78rem; font-weight: 500; color: var(--txt-2);
+      display: flex; align-items: center; gap: .35rem;
+      transition: color .2s;
+    }
+    .p-link:hover { color: var(--cyan); }
+    .p-link-dim { color: var(--txt-m); cursor: default; }
+
+    /* ── SKILLS ───────────────────────────────────────────────────────── */
+    .skill-groups { display: flex; flex-direction: column; }
+    .sg {
+      display: grid; grid-template-columns: 150px 1fr;
+      gap: 1.25rem; align-items: start;
+      padding: 1.4rem 0; border-top: 1px solid var(--border);
+    }
+    .sg-label {
+      font-size: .78rem; font-weight: 600;
+      color: var(--txt-m); padding-top: .15rem;
+    }
+    .sg-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .sk {
+      font-size: .78rem; font-weight: 500;
+      padding: .3rem .8rem;
+      background: var(--bg-up); color: var(--txt-2);
+      border: 1px solid var(--border); border-radius: 100px;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .sk:hover {
+      background: var(--cyan-10);
+      border-color: rgba(0,212,255,.3);
+      color: var(--cyan);
+    }
+
+    /* ── EDUCATION ────────────────────────────────────────────────────── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .edu-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.75rem;
+      transition: border-color .3s;
+    }
+    .edu-card:hover { border-color: var(--border-h); }
+    .edu-degree { font-size: .75rem; font-weight: 600; color: var(--cyan); font-family: var(--mono); margin-bottom: .45rem; }
+    .edu-school { font-size: 1.05rem; font-weight: 700; color: var(--txt); margin-bottom: .3rem; }
+    .edu-detail { font-size: .85rem; color: var(--txt-2); }
+    .edu-period { font-size: .7rem; color: var(--txt-m); font-family: var(--mono); margin-top: .9rem; }
+
+    /* ── ABOUT ────────────────────────────────────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p {
+      font-size: .975rem; color: var(--txt-2); line-height: 1.82;
+      margin-bottom: 1.4rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--txt); font-weight: 500; }
+
+    .about-facts { display: flex; flex-direction: column; gap: 1rem; }
+    .af {
+      padding: 1.1rem 1.25rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 2px solid var(--cyan); border-radius: 0 var(--r) var(--r) 0;
+    }
+    .af-label {
+      font-size: .68rem; font-weight: 600; font-family: var(--mono);
+      color: var(--cyan); margin-bottom: .3rem;
+    }
+    .af-val { font-size: .88rem; color: var(--txt); line-height: 1.5; }
+
+    /* ── CONTACT ──────────────────────────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .c-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800;
+      letter-spacing: -.025em; line-height: 1.2;
+      color: var(--txt); margin-bottom: .9rem;
+    }
+    .c-desc { font-size: .95rem; color: var(--txt-2); line-height: 1.72; margin-bottom: 2rem; }
+    .c-links { display: flex; flex-direction: column; gap: .65rem; }
+    .c-link {
+      display: flex; align-items: center; gap: .9rem;
+      padding: .9rem 1.1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--txt-2); transition: border-color .3s, color .3s;
+    }
+    .c-link:hover { border-color: var(--cyan); color: var(--cyan); }
+    .c-link svg { flex-shrink: 0; }
+    .c-link-lbl { font-size: .68rem; color: var(--txt-m); font-family: var(--mono); }
+    .c-link-val { font-size: .875rem; font-weight: 500; }
+
+    /* ── FOOTER ───────────────────────────────────────────────────────── */
+    footer {
+      padding: 1.75rem max(1.5rem, 8vw);
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .75rem;
+    }
+    footer p { font-size: .75rem; color: var(--txt-m); font-family: var(--mono); }
+
+    /* ── DIVIDER ──────────────────────────────────────────────────────── */
+    .s-div { border-top: 1px solid var(--border); }
+
+    /* ── SCROLL REVEAL ────────────────────────────────────────────────── */
+    .rv {
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .rv.vis { opacity: 1; transform: none; }
+
+    /* ── REDUCED MOTION ───────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .rv { opacity: 1; transform: none; }
+      #hero-canvas { display: none; }
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .p-feat, .p-side { grid-column: span 12; }
+      .p-half { grid-column: span 12; }
+    }
+    @media (max-width: 860px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .sg { grid-template-columns: 1fr; gap: .5rem; }
+      .metrics-row { grid-template-columns: 1fr 1fr; }
+      .m-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .m-cell:nth-child(even) { border-left: 1px solid var(--border); }
+      .m-cell:last-child, .m-cell:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+      .nav-links, .nav-btn { display: none; }
+      .nav-ham { display: flex; }
+    }
+    @media (max-width: 520px) {
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      h1.hero-name { font-size: clamp(2.2rem, 10vw, 2.8rem); }
+      .p-half { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================== NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-mark">srs<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shyam.sr@northeastern.edu" class="nav-btn">Get in touch</a>
+  <button class="nav-ham" id="nav-ham" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mmenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <a href="#experience" class="mm-link">Experience</a>
+  <a href="#projects"   class="mm-link">Projects</a>
+  <a href="#skills"     class="mm-link">Skills</a>
+  <a href="#about"      class="mm-link">About</a>
+  <a href="#contact"    class="mm-link">Contact</a>
+</div>
+
+<!-- ================================================================== HERO -->
+<section id="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+
+    <div class="hero-status">
+      <div class="h-dot"></div>
+      <span class="h-status-txt">Exploring 2027 Engineering Opportunities · Boston, MA</span>
+    </div>
+
+    <h1 class="hero-name">Sree Rachnae<br>Shyam</h1>
+
+    <div class="hero-role-wrap">
+      <div class="hero-role">
+        <span id="role-word">Data Engineer</span>
+      </div>
+    </div>
+
+    <p class="hero-desc">
+      I write production code that moves data at scale. At <strong>Eli Lilly</strong>, I owned
+      pipelines processing <strong>65M+ rows</strong> for US analytics systems and co-led an
+      ML targeting platform covering <strong>50M+ healthcare records</strong>. At <strong>Quantiphi</strong>,
+      I built a GenAI application that cut query latency <strong>by 75%</strong>. Currently at
+      <strong>Northeastern</strong>, sharpening the fundamentals and figuring out what to build next.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-fill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Explore Work
+      </a>
+      <a href="#experience" class="btn-line">Experience</a>
+      <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="btn-sq" aria-label="GitHub profile">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/shyamrachna25/" target="_blank" rel="noopener noreferrer" class="btn-sq" aria-label="LinkedIn profile">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ================================================================== METRICS -->
+<section id="metrics">
+  <div class="metrics-row">
+    <div class="m-cell rv">
+      <div class="m-num"><span class="counter c" data-target="65">0</span>M+</div>
+      <div class="m-label">Data rows processed across US analytics pipelines</div>
+      <div class="m-src">Eli Lilly · Production Python / PySpark / AWS</div>
+    </div>
+    <div class="m-cell rv" style="transition-delay:.08s">
+      <div class="m-num"><span class="counter c" data-target="50">0</span>M+</div>
+      <div class="m-label">Healthcare provider records in ML targeting platform</div>
+      <div class="m-src">Eli Lilly · Co-led optimization</div>
+    </div>
+    <div class="m-cell rv" style="transition-delay:.16s">
+      <div class="m-num"><span class="c">75</span>%</div>
+      <div class="m-label">Latency reduction in GenAI analytics app - 60s to 15s</div>
+      <div class="m-src">Quantiphi · LLM prompting redesign</div>
+    </div>
+    <div class="m-cell rv" style="transition-delay:.24s">
+      <div class="m-num"><span class="counter c" data-target="500">0</span>K+</div>
+      <div class="m-label">Monthly supply chain transactions processed via ML pipelines</div>
+      <div class="m-src">Quantiphi · Anomaly detection &amp; forecasting</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== EXPERIENCE -->
+<section id="experience" class="s-div">
+  <div class="wrap">
+    <div class="s-head rv">
+      <h2 class="s-title">Where I've built things</h2>
+      <p class="s-sub">Production engineering across data infrastructure, machine learning, and generative AI.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Eli Lilly -->
+      <div class="t-item rv">
+        <div class="t-node"></div>
+        <div class="t-meta">
+          <span class="t-co">Eli Lilly</span>
+          <span class="t-when">Aug 2024 - Aug 2025</span>
+        </div>
+        <div class="t-role">Data Engineer - Global Omnichannel &amp; Strategy Operations</div>
+        <div class="t-loc">Bangalore, India</div>
+        <ul class="t-bullets">
+          <li>Owned production <strong>Python, PySpark, and Hive data pipelines on AWS</strong>, driving features from scoping through deployment and processing datasets exceeding <strong>65M rows</strong> for US analytics systems.</li>
+          <li>Built 3 Tableau dashboards and enhanced 3 existing ones for 20+ stakeholders; led development of a centralised <strong>Power BI Reporting Hub</strong> consolidating 20+ dashboards for 50+ global users across 11 teams.</li>
+          <li>Co-led optimisation of an <strong>ML-based targeting platform</strong> managing 50M+ US healthcare provider records, contributing to an estimated 10-20% improvement in engagement efficiency.</li>
+          <li>Investigated failed production pipelines, identified root causes, resolved processing issues, and documented corrective actions to maintain reliable analytics delivery across US operations.</li>
+          <li>Enhanced field team capabilities through <strong>Veeva CRM and Flow Builder</strong> - UI upgrades, appointment scheduling, and market trend analytics.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">Hive</span>
+          <span class="tag">AWS</span><span class="tag">SQL</span><span class="tag">Tableau</span>
+          <span class="tag">Power BI</span><span class="tag">Scikit-learn</span><span class="tag">Veeva CRM</span>
+        </div>
+      </div>
+
+      <!-- Quantiphi -->
+      <div class="t-item rv" style="transition-delay:.08s">
+        <div class="t-node"></div>
+        <div class="t-meta">
+          <span class="t-co">Quantiphi</span>
+          <span class="t-when">Mar 2023 - Nov 2023</span>
+        </div>
+        <div class="t-role">Machine Learning Engineer</div>
+        <div class="t-loc">Bangalore, India</div>
+        <ul class="t-bullets">
+          <li>Built a <strong>GenAI analytics application using Azure OpenAI and Python</strong> that translates natural-language questions into executable SQL and auto-generates visualisations.</li>
+          <li>Designed multi-stage <strong>LLM prompting workflows</strong> for query interpretation and chart generation, cutting end-to-end latency by <strong>75%</strong> - from 60s to 15s.</li>
+          <li>Developed <strong>ML pipelines</strong> to process 500K+ monthly supply chain transactions, detecting anomalies and forecasting demand.</li>
+          <li>Trained and evaluated <strong>XGBoost and scikit-learn models</strong> with feature engineering, hyperparameter tuning (Optuna), and rigorous validation.</li>
+          <li>Implemented <strong>MLflow</strong> for experiment tracking and model versioning; containerised inference services with <strong>Docker</strong> for reproducible deployment.</li>
+          <li>Built batch and real-time inference workflows using <strong>FastAPI, AWS S3, and Lambda</strong>, exposing predictions through REST APIs.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag-v">Azure OpenAI</span><span class="tag tag-v">LLMs</span>
+          <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span>
+          <span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">AWS Lambda</span>
+        </div>
+      </div>
+
+      <!-- NEU (smaller role) -->
+      <div class="t-item rv" style="transition-delay:.16s">
+        <div class="t-node" style="border-color:var(--txt-m)"></div>
+        <div class="t-meta">
+          <span class="t-co">Northeastern University</span>
+          <span class="t-when">Sept 2026 - Present</span>
+        </div>
+        <div class="t-role">Student Support Staff - Office of Global Services</div>
+        <div class="t-loc">Boston, MA</div>
+        <ul class="t-bullets">
+          <li>Triage and resolve international student inquiries through ServiceNow, applying working knowledge of immigration regulations and student visa requirements.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag-m">ServiceNow</span><span class="tag tag-m">Case Management</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== PROJECTS -->
+<section id="projects" class="s-div">
+  <div class="wrap">
+    <div class="s-head rv">
+      <h2 class="s-title">What I've built</h2>
+      <p class="s-sub">Projects spanning data engineering, machine learning, and applied AI - from production systems to published research.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Meridian - featured -->
+      <div class="p-card p-feat rv">
+        <span class="p-badge pb-c">Data Engineering · ML</span>
+        <h3 class="p-title">Meridian: API Migration Risk Tracker</h3>
+        <div class="p-hl">Precision 1.000 · Recall 1.000 · 265 of 265 real migration edits found · +0.088 PR-AUC over baseline</div>
+        <p class="p-desc">
+          Built a code intelligence tool that scans repositories at scale to identify API migration risks before they reach production. Used tree-sitter to parse 2,374 files across 22 repositories in 0.78 seconds-finding every real migration edit with zero false positives and all 1,059 package call sites with perfect precision and recall. The defect-prediction layer (trained on 30,000+ labelled commits with LightGBM, tuned via Optuna on time-ordered folds) beat the production baseline by +0.088 PR-AUC on held-out 2023 validation data. SHAP explanations make every prediction interpretable. The full pipeline is containerised in Docker and orchestrated with Airflow on GCP.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag">Python</span><span class="tag">tree-sitter</span><span class="tag">LightGBM</span>
+          <span class="tag">Optuna</span><span class="tag">SHAP</span><span class="tag">MLflow</span>
+          <span class="tag">Docker</span><span class="tag">Airflow</span><span class="tag">GCP</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="p-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- NL-to-SQL -->
+      <div class="p-card p-side rv" style="transition-delay:.08s">
+        <span class="p-badge pb-v">GenAI · LLMs</span>
+        <h3 class="p-title">NL-to-SQL GenAI Analytics App</h3>
+        <div class="p-hl">75% latency reduction · 60s → 15s · Azure OpenAI</div>
+        <p class="p-desc">
+          Designed and built an Azure OpenAI-powered application at Quantiphi that translates natural-language business questions into executable SQL and auto-generates charts. The original architecture was slow-I redesigned the multi-stage prompting workflow from scratch, reducing latency from 60 to 15 seconds. The system handles query interpretation, schema-aware SQL generation, result processing, and visualisation recommendation in a single pipeline.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag tag-v">Azure OpenAI</span><span class="tag">Python</span>
+          <span class="tag">SQL</span><span class="tag">FastAPI</span><span class="tag">Pandas</span>
+        </div>
+        <div class="p-links">
+          <span class="p-link p-link-dim">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Professional work - private
+          </span>
+        </div>
+      </div>
+
+      <!-- Fairness ML -->
+      <div class="p-card p-half rv">
+        <span class="p-badge pb-b">ML · Research</span>
+        <h3 class="p-title">Fairness-Accuracy Trade-offs in Automated Decision Systems</h3>
+        <div class="p-hl">99.6% reduction in equalized odds disparity · &lt;4.3% accuracy loss</div>
+        <p class="p-desc">
+          Trained 3 classifiers on 30,162 records (up to 86.4% accuracy) and built a fairness evaluation pipeline measuring demographic parity and equalized odds across sex and race. Implemented 2 bias-mitigation interventions and quantified the trade-off between performance and fairness - demonstrating that meaningful fairness improvements don't have to cost much accuracy.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span>
+          <span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="p-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Facial Emotion - Published -->
+      <div class="p-card p-half rv" style="transition-delay:.08s">
+        <span class="p-badge pb-g">Published · Deep Learning</span>
+        <h3 class="p-title">Real-time Facial Emotion Recognition</h3>
+        <div class="p-hl">Published in IJNRD · Paper ID IJNRD2406067</div>
+        <p class="p-desc">
+          End-to-end deep learning pipeline using MobileNetV2 and CNNs for real-time facial emotion recognition across both single and multi-face inputs. The work was peer-reviewed and published, covering the full pipeline from preprocessing and data augmentation through model training and real-time inference.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span>
+          <span class="tag">MobileNetV2</span><span class="tag">OpenCV</span>
+        </div>
+        <div class="p-links">
+          <a href="https://www.ijnrd.org/papers/IJNRD2406067.pdf" target="_blank" rel="noopener noreferrer" class="p-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Publication
+          </a>
+        </div>
+      </div>
+
+      <!-- Yoga Pose -->
+      <div class="p-card p-half rv">
+        <span class="p-badge pb-v">Computer Vision · Full Stack</span>
+        <h3 class="p-title">Mind Body-In Sync: Yoga Pose Classifier</h3>
+        <p class="p-desc">
+          CNN-based system using VGG16 for real-time yoga pose estimation and posture correction, deployed as a web and mobile application with personalised feedback generation. Trained the VGG16 model and built the full deployment stack using JavaScript and Firebase - from model inference to live feedback in the browser.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span>
+          <span class="tag">VGG16</span><span class="tag">JavaScript</span><span class="tag">Firebase</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="p-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Freelance Java -->
+      <div class="p-card p-half rv" style="transition-delay:.08s">
+        <span class="p-badge pb-b">Software Engineering</span>
+        <h3 class="p-title">Freelance Project Bidding &amp; Management System</h3>
+        <p class="p-desc">
+          Full-featured project management system in Java and MySQL covering project posting, bidding, contracts, and payments on a normalised 9-table relational schema. Implemented stored procedures, triggers, SHA-256 password hashing, SQL injection safeguards, and concurrent bidding tested with JUnit.
+        </p>
+        <div class="tags" style="margin-bottom:1.25rem">
+          <span class="tag">Java</span><span class="tag">MySQL</span>
+          <span class="tag">JDBC</span><span class="tag">Maven</span><span class="tag">JUnit</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="p-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== SKILLS -->
+<section id="skills" class="s-div">
+  <div class="wrap">
+    <div class="s-head rv">
+      <h2 class="s-title">What I work with</h2>
+      <p class="s-sub">Technologies I've used in production systems and personal projects.</p>
+    </div>
+    <div class="skill-groups">
+      <div class="sg rv">
+        <span class="sg-label">Languages</span>
+        <div class="sg-tags">
+          <span class="sk">Python</span><span class="sk">SQL</span><span class="sk">Java</span>
+          <span class="sk">C++</span><span class="sk">JavaScript</span><span class="sk">TypeScript</span><span class="sk">HTML / CSS</span>
+        </div>
+      </div>
+      <div class="sg rv" style="transition-delay:.04s">
+        <span class="sg-label">Data Engineering</span>
+        <div class="sg-tags">
+          <span class="sk">PySpark</span><span class="sk">Apache Airflow</span><span class="sk">dbt</span>
+          <span class="sk">FastAPI</span><span class="sk">REST APIs</span><span class="sk">ETL / ELT</span>
+          <span class="sk">Data Quality</span><span class="sk">Hive</span>
+        </div>
+      </div>
+      <div class="sg rv" style="transition-delay:.08s">
+        <span class="sg-label">ML &amp; AI</span>
+        <div class="sg-tags">
+          <span class="sk">PyTorch</span><span class="sk">TensorFlow</span><span class="sk">Scikit-learn</span>
+          <span class="sk">XGBoost</span><span class="sk">LightGBM</span><span class="sk">Keras</span>
+          <span class="sk">Pandas</span><span class="sk">NumPy</span><span class="sk">SHAP</span><span class="sk">MLflow</span><span class="sk">Optuna</span>
+        </div>
+      </div>
+      <div class="sg rv" style="transition-delay:.12s">
+        <span class="sg-label">Generative AI</span>
+        <div class="sg-tags">
+          <span class="sk">Azure OpenAI</span><span class="sk">LangChain</span>
+          <span class="sk">Prompt Engineering</span><span class="sk">LLM Applications</span><span class="sk">RAG</span>
+        </div>
+      </div>
+      <div class="sg rv" style="transition-delay:.16s">
+        <span class="sg-label">Cloud &amp; Infra</span>
+        <div class="sg-tags">
+          <span class="sk">AWS (S3, Lambda)</span><span class="sk">GCP</span><span class="sk">Azure</span>
+          <span class="sk">Docker</span><span class="sk">GitHub Actions</span><span class="sk">CI / CD</span><span class="sk">Linux</span>
+        </div>
+      </div>
+      <div class="sg rv" style="transition-delay:.20s">
+        <span class="sg-label">Databases &amp; BI</span>
+        <div class="sg-tags">
+          <span class="sk">PostgreSQL</span><span class="sk">MySQL</span><span class="sk">MongoDB</span>
+          <span class="sk">Snowflake</span><span class="sk">SQLite</span><span class="sk">Redis</span>
+          <span class="sk">Tableau</span><span class="sk">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== EDUCATION -->
+<section id="education" class="s-div">
+  <div class="wrap">
+    <div class="s-head rv">
+      <h2 class="s-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card rv">
+        <div class="edu-degree">Master of Science in Computer Science</div>
+        <div class="edu-school">Northeastern University</div>
+        <div class="edu-detail">Khoury College of Computer Sciences · Boston, MA</div>
+        <div class="edu-period">2025 - Expected May 2027</div>
+      </div>
+      <div class="edu-card rv" style="transition-delay:.08s">
+        <div class="edu-degree">Bachelor of Engineering in Information Science</div>
+        <div class="edu-school">B.M.S College of Engineering</div>
+        <div class="edu-detail">Bangalore, India</div>
+        <div class="edu-period">2020 - 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== ABOUT -->
+<section id="about" class="s-div">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text rv">
+        <h2 class="s-title" style="margin-bottom:1.5rem">About</h2>
+        <p>
+          I'm drawn to the parts of engineering where data, infrastructure, and intelligence
+          intersect - not because it's fashionable, but because that's where the most interesting
+          problems tend to live and where solutions have real, measurable impact.
+        </p>
+        <p>
+          My path was more practical than academic. I started working at Quantiphi as an ML engineer
+          before finishing my undergrad - got to see how production ML systems behave in the wild,
+          including all the parts that rarely make it into papers. Then I spent a year at Eli Lilly
+          owning data pipelines that couldn't have off days. That experience grounded a lot of
+          my thinking about engineering quality and what it actually means to build something
+          that works at scale.
+        </p>
+        <p>
+          I'm now at Northeastern filling in gaps, taking on research-adjacent projects, and
+          figuring out what I want to build next. I tend to gravitate toward problems where the
+          data infrastructure and the intelligence layer can't be treated as separate concerns -
+          and where you have to understand both to build something good.
+        </p>
+        <p>
+          Outside of work: distributed systems internals, fairness in automated decision-making,
+          and occasionally publishing things.
+        </p>
+      </div>
+      <div class="about-facts rv" style="transition-delay:.12s">
+        <div class="af">
+          <div class="af-label">Currently</div>
+          <div class="af-val">MS CS @ Northeastern · Exploring 2027 engineering opportunities</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Previously</div>
+          <div class="af-val">Data Engineer @ Eli Lilly · ML Engineer @ Quantiphi</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Interested in</div>
+          <div class="af-val">Data Engineering · ML Systems · GenAI Applications · MLOps</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Published</div>
+          <div class="af-val">Real-time Facial Emotion Recognition · IJNRD2406067</div>
+        </div>
+        <div class="af">
+          <div class="af-label">Based in</div>
+          <div class="af-val">Boston, Massachusetts</div>
+        </div>
+        <div class="af" style="border-left-color:var(--violet)">
+          <div class="af-label" style="color:var(--violet)">Open to</div>
+          <div class="af-val">Full-time roles starting 2027 · Internships sooner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== CONTACT -->
+<section id="contact" class="s-div">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="rv">
+        <h2 class="c-title">Let's work<br>together.</h2>
+        <p class="c-desc">
+          I'm open to data engineering, ML engineering, and software engineering roles starting in 2027 - and internships sooner. If you're working on something interesting, I'd like to hear about it.
+        </p>
+        <a href="mailto:shyam.sr@northeastern.edu" class="btn-fill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send a message
+        </a>
+      </div>
+      <div class="c-links rv" style="transition-delay:.1s">
+        <a href="https://github.com/shyamrachna25" target="_blank" rel="noopener noreferrer" class="c-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <div>
+            <div class="c-link-lbl">GitHub</div>
+            <div class="c-link-val">github.com/shyamrachna25</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/shyamrachna25/" target="_blank" rel="noopener noreferrer" class="c-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <div>
+            <div class="c-link-lbl">LinkedIn</div>
+            <div class="c-link-val">linkedin.com/in/shyamrachna25</div>
+          </div>
+        </a>
+        <a href="mailto:shyam.sr@northeastern.edu" class="c-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <div class="c-link-lbl">Email</div>
+            <div class="c-link-val">shyam.sr@northeastern.edu</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================== FOOTER -->
+<footer>
+  <p>Sree Rachnae Shyam</p>
+  <p>Data &amp; AI Engineer · Boston, MA</p>
+</footer>
+
+<!-- ================================================================== SCRIPTS -->
+<script>
+  /* ── NAV SCROLL ──────────────────────────────────────────────────── */
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 24);
+  }, { passive: true });
+
+  /* ── MOBILE MENU ─────────────────────────────────────────────────── */
+  const hamBtn  = document.getElementById('nav-ham');
+  const mMenu   = document.getElementById('mmenu');
+  let menuOpen  = false;
+
+  function toggleMenu(state) {
+    menuOpen = state;
+    mMenu.classList.toggle('open', menuOpen);
+    hamBtn.setAttribute('aria-expanded', menuOpen);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  }
+
+  hamBtn.addEventListener('click', () => toggleMenu(!menuOpen));
+  document.querySelectorAll('.mm-link').forEach(a =>
+    a.addEventListener('click', () => toggleMenu(false))
+  );
+
+  /* ── HERO CANVAS ─────────────────────────────────────────────────── */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const canvas = document.getElementById('hero-canvas');
+    const ctx    = canvas.getContext('2d');
+    let w, h, particles, raf;
+
+    function resize() {
+      w = canvas.width  = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+
+    function Particle() {
+      this.x  = Math.random() * w;
+      this.y  = Math.random() * h;
+      this.vx = (Math.random() - .5) * .28;
+      this.vy = (Math.random() - .5) * .28;
+      this.r  = Math.random() * 1.4 + .4;
+      this.a  = Math.random() * .35 + .08;
+    }
+    Particle.prototype.update = function() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > w) this.vx *= -1;
+      if (this.y < 0 || this.y > h) this.vy *= -1;
+    };
+    Particle.prototype.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,212,255,' + this.a + ')';
+      ctx.fill();
+    };
+
+    function init() {
+      resize();
+      const n = Math.min(70, Math.floor(w * h / 14000));
+      particles = Array.from({ length: n }, () => new Particle());
+    }
+
+    function frame() {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(0,212,255,' + ((1 - d / 110) * .07) + ')';
+            ctx.lineWidth = .5;
+            ctx.stroke();
+          }
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('resize', () => { resize(); }, { passive: true });
+    init();
+    frame();
+
+    // Pause when hero is not visible (perf)
+    const heroObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        if (!raf) raf = requestAnimationFrame(frame);
+      } else {
+        cancelAnimationFrame(raf);
+        raf = null;
+      }
+    });
+    heroObserver.observe(document.getElementById('hero'));
+  })();
+
+  /* ── ROLE CYCLING ────────────────────────────────────────────────── */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const roles = ['Data Engineer', 'ML Engineer', 'Software Engineer', 'GenAI Developer'];
+    const el    = document.getElementById('role-word');
+    let i = 0;
+    setInterval(() => {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(6px)';
+      setTimeout(() => {
+        i = (i + 1) % roles.length;
+        el.textContent     = roles[i];
+        el.style.opacity   = '1';
+        el.style.transform = 'translateY(0)';
+      }, 320);
+    }, 2800);
+  })();
+
+  /* ── SCROLL REVEAL ───────────────────────────────────────────────── */
+  const rvEls = document.querySelectorAll('.rv');
+  const rvObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        rvObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .1, rootMargin: '0px 0px -32px 0px' });
+  rvEls.forEach(el => rvObs.observe(el));
+
+  /* ── COUNTER ANIMATION ───────────────────────────────────────────── */
+  const counters = document.querySelectorAll('.counter');
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el     = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const dur    = 1500;
+      const start  = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const v = 1 - Math.pow(1 - p, 3);           // ease-out-cubic
+        el.textContent = Math.floor(v * target);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      })(start);
+      cObs.unobserve(el);
+    });
+  }, { threshold: .6 });
+  counters.forEach(c => cObs.observe(c));
+</script>
+</body>
+</html>
